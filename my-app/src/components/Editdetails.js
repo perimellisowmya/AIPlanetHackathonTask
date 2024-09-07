@@ -76,16 +76,20 @@ function Editdetails() {
     e.preventDefault();
 
     // Make sure to update timeStatus
-    const timeStatus = calculateTimeStatus(formData.startDate, formData.endDate);
+    const status = calculateTimeStatus(formData.startDate, formData.endDate);
     const dataWithTimeStatus = {
       ...formData,
-      timeStatus, // Time status is still included in the data
+      timeStatus:status, // Time status is still included in the data
     };
 
     if (formData.id) {
       dispatch(updateChallenge(dataWithTimeStatus));
+      console.log("datatimewithstatus",dataWithTimeStatus);
+
     } else {
       dispatch(addChallenge(dataWithTimeStatus));
+      console.log("datatimewithstatus",dataWithTimeStatus);
+
     }
 
     setFormData({
@@ -97,7 +101,7 @@ function Editdetails() {
       image: null,
     });
     if (fileInputRef.current) {
-      fileInputRef.current.value = "";
+      fileInputRef.current.value = ""
     }
   };
 
